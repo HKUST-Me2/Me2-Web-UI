@@ -9,8 +9,17 @@ const WebChat = ({ className, onFetchToken, store, token }) => {
   const styleSet = useMemo(
     () =>
       createStyleSet({
-        backgroundColor: 'Transparent'
+        backgroundColor: 'white',
+        bubbleBorderRadius: 20, bubbleNubOffset: 5,
+        bubbleNubSize: 10,
+        bubbleFromUserNubSize: 10,
+        bubbleFromUserBorderRadius: 20, 
+        bubbleFromUserNubOffset: 5,
+        botAvatarImage: 'me2bot_logo.svg',
+        userAvatarImage:'profile_pic.svg',
+        bubbleFromUserBackground: '#0083e7'
       }),
+
     []
   );
 

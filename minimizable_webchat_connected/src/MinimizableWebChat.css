@@ -1,7 +1,7 @@
 .minimizable-web-chat > button.maximize {
-  background-color: #39C;
+  background-color: #ba9b5d;
   border-radius: 50%;
-  border: 2px solid #39C;
+  border: 2px solid #ba9b5d;
   bottom: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, .2);
   color: White;
@@ -24,29 +24,29 @@
 
 .minimizable-web-chat > button.maximize:focus:not(:active),
 .minimizable-web-chat > button.maximize:hover:not(:active) {
-  background-color: #069;
-  border-color: #069;
+  background-color: #ccb485;
+  border-color: #ccb485;
 }
 
 .minimizable-web-chat > button.maximize:active {
   background-color: White;
-  color: #39C;
+  color: #f3f7ff;
 }
 
 .minimizable-web-chat > .chat-box {
-  background-color: rgba(255, 255, 255, .8);
-  backdrop-filter: blur(10px);
+  background-color: hex(#FFFFFF);
   border-radius: 4px;
   box-shadow: 0 0 20px rgba(0, 0, 0, .2);
-  border: 4px solid #39C;
+  border: 4px solid #f3f7ff;
   bottom: 20px;
   display: flex;
   flex-direction: column;
-  max-width: 400px;
-  min-width: 320px;
+  max-width: 500px;
+  min-width: 420px;
   position: fixed;
   top: 20px;
   width: 30%;
+
 }
 
 .minimizable-web-chat > .chat-box.hide {
@@ -62,7 +62,7 @@
 }
 
 .minimizable-web-chat > .chat-box > header {
-  background-color: #39C;
+  background-color: #f3f7ff;
   height: 40px;
   display: flex;
 }
@@ -76,7 +76,7 @@
   height: 40px;
   background-color: Transparent;
   border: 0;
-  color: White;
+  color:#96c4e5;
   outline: 0;
 }
 

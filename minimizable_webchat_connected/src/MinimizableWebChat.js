@@ -1,55 +1,60 @@
+import { createStore, createStyleSet } from 'botframework-webchat';
 import classNames from 'classnames';
 import React, { useCallback, useMemo, useState } from 'react';
-import { createStore, createStyleSet } from 'botframework-webchat';
-
-import WebChat from './WebChat';
 
 import './fabric-icons-inline.css';
 import './MinimizableWebChat.css';
+import WebChat from './WebChat';
 
 const MinimizableWebChat = () => {
-  const store = useMemo(
-    () =>
-      createStore({}, ({ dispatch }) => next => action => {
-        if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
-          dispatch({
-            type: 'WEB_CHAT/SEND_EVENT',
-            payload: {
-              name: 'webchat/join',
-              value: {
-                language: window.navigator.language
-              }
+  // Create the store
+  const store = useMemo(() => {
+    
+    const middleware = ({ dispatch }) => next => action => {
+      if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
+        // Send a 'webchat/join' event when the Direct Line connection is established
+        dispatch({
+          type: 'WEB_CHAT/SEND_EVENT',
+          payload: {
+            name: 'webchat/join',
+            value: {
+              language: window.navigator.language
             }
-          });
-        } else if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY') {
-          if (action.payload.activity.from.role === 'bot') {
-            setNewMessage(true);
           }
+        });
+      } else if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY') {
+        // Set a flag when a new message is received from the bot
+        if (action.payload.activity.from.role === 'bot') {
+          setNewMessage(true);
         }
+      }
+      return next(action);
+    };
+    return createStore({}, middleware);
+  }, []);
 
-        return next(action);
-      }),
-    []
-  );
-
+  // Create the styleSet
   const styleSet = useMemo(
     () =>
       createStyleSet({
-        backgroundColor: 'Transparent'
+        backgroundColor: 'Transparent',
+        avatarSize: 40,
+        botAvatarImage: 'https://docs.microsoft.com/en-us/azure/bot-service/v4sdk/media/logo_bot.svg?view=azure-bot-service-4.0',
+        userAvatarImage: 'https://docs.microsoft.com/en-us/azure/bot-service/v4sdk/media/logo_bot.svg?view=azure-bot-service-4.0',
       }),
     []
   );
 
+  // Set up state variables
   const [loaded, setLoaded] = useState(false);
   const [minimized, setMinimized] = useState(true);
   const [newMessage, setNewMessage] = useState(false);
   const [side, setSide] = useState('right');
   const [token, setToken] = useState();
-
-  // To learn about reconnecting to a conversation, see the following documentation:
-  // https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-reconnect-to-conversation?view=azure-bot-service-4.0
-
+  
+  // Define event handlers
   const handleFetchToken = useCallback(async () => {
+    // Fetch the Direct Line token if it hasn't been fetched yet
     if (!token) {
       const res = await fetch('https://directline.botframework.com/v3/directline/tokens/generate', {
         method: 'POST',
@@ -60,18 +65,19 @@ const MinimizableWebChat = () => {
         body: JSON.stringify({ User: { Id: 'user1' } })
       });
       const { token } = await res.json();
-
       setToken(token);
     }
   }, [setToken, token]);
 
-  const handleMaximizeButtonClick = useCallback(async () => {
+  const handleMaximizeButtonClick = useCallback(() => {
+    // Show the chat box and reset the new message flag when the maximize button is clicked
     setLoaded(true);
     setMinimized(false);
     setNewMessage(false);
-  }, [setMinimized, setNewMessage]);
+  }, [setLoaded, setMinimized, setNewMessage]);
 
   const handleMinimizeButtonClick = useCallback(() => {
+    // Hide the chat box and reset the new message flag when the minimize button is clicked
     setMinimized(true);
     setNewMessage(false);
   }, [setMinimized, setNewMessage]);
@@ -79,11 +85,6 @@ const MinimizableWebChat = () => {
   const handleSwitchButtonClick = useCallback(() => {
     setSide(side === 'left' ? 'right' : 'left');
   }, [setSide, side]);
-
-  // TODO: [P2] Currently, we cannot unmount Web Chat from DOM when it is minimized.
-  //       Today, if we unmount it, Web Chat will call disconnect on DirectLineJS object.
-  //       When minimized, we still want to maintain that connection while the UI is gone.
-  //       This is related to https://github.com/microsoft/BotFramework-WebChat/issues/2750.
 
   return (
     <div className="minimizable-web-chat">

@@ -1,5 +1,8 @@
-import React, { useEffect, useMemo } from 'react';
 import ReactWebChat, { createDirectLine, createStyleSet } from 'botframework-webchat';
+import React, { useEffect, useMemo } from 'react';
+
+import UserImage from './Icons/avatar_icon.png';
+import BotImage from './Icons/chatbot_icon.png';
 
 import './WebChat.css';
 
@@ -15,20 +18,30 @@ const WebChat = ({ className, onFetchToken, store, token }) => {
         bubbleFromUserNubSize: 10,
         bubbleFromUserBorderRadius: 20, 
         bubbleFromUserNubOffset: 5,
-        botAvatarImage: 'me2bot_logo.svg',
-        userAvatarImage:'profile_pic.svg',
         bubbleFromUserBackground: '#0083e7'
       }),
 
     []
   );
 
+  const styleOptions = {
+    botAvatarImage: BotImage,
+    //'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ22HRut4vhYrvwof7oDqAoH94a4IuAyAY9dvBKC1tLNw&s',
+    botAvatarInitials: 'Me2',
+    userAvatarImage: UserImage,
+    userAvatarInitials: 'User'
+  };
+  
   useEffect(() => {
     onFetchToken();
   }, [onFetchToken]);
 
   return token ? (
-    <ReactWebChat className={`${className || ''} web-chat`} directLine={directLine} store={store} styleSet={styleSet} />
+    <ReactWebChat className={`${className || ''} web-chat`} 
+      directLine={directLine} 
+      store={store} 
+      styleSet={styleSet} 
+      styleOptions={styleOptions} />
   ) : (
     <div className={`${className || ''} connect-spinner`}>
       <div className="content">

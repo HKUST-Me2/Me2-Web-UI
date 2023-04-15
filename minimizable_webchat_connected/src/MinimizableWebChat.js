@@ -33,14 +33,11 @@ const MinimizableWebChat = () => {
     return createStore({}, middleware);
   }, []);
 
-  // Create the styleSet
+  // ! Do Not Change directly from here because of the line (import WebChat from './WebChat');
   const styleSet = useMemo(
     () =>
       createStyleSet({
         backgroundColor: 'Transparent',
-        avatarSize: 40,
-        botAvatarImage: 'https://docs.microsoft.com/en-us/azure/bot-service/v4sdk/media/logo_bot.svg?view=azure-bot-service-4.0',
-        userAvatarImage: 'https://docs.microsoft.com/en-us/azure/bot-service/v4sdk/media/logo_bot.svg?view=azure-bot-service-4.0',
       }),
     []
   );

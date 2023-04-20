@@ -15,7 +15,7 @@
 }
 
 .minimizable-web-chat > button.maximize > .red-dot {
-  color: #EF0000;
+  color: #dc3232;
   font-size: 14px;
   position: absolute;
   right: 12px;
@@ -24,13 +24,13 @@
 
 .minimizable-web-chat > button.maximize:focus:not(:active),
 .minimizable-web-chat > button.maximize:hover:not(:active) {
-  background-color: #ccb485;
+  background-color: #9a6b0c;
   border-color: #ccb485;
 }
 
 .minimizable-web-chat > button.maximize:active {
-  background-color: White;
-  color: #f3f7ff;
+  background-color: #aa966e;
+  color: #ffffff;
 }
 
 .minimizable-web-chat > .chat-box {
@@ -82,11 +82,11 @@
 
 .minimizable-web-chat > .chat-box > header > button:focus:not(:active),
 .minimizable-web-chat > .chat-box > header > button:hover:not(:active) {
-  color: rgba(255, 255, 255, .6);
+  color: rgb(0, 81, 255);
 }
 
 .minimizable-web-chat > .chat-box > header > button:focus:active {
-  color: rgba(255, 255, 255, .4);
+  color: rgba(51, 0, 255, 0.4);
 }
 
 .minimizable-web-chat > .chat-box > .react-web-chat {

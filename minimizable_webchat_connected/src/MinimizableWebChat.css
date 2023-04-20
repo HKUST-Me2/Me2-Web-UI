@@ -63,7 +63,7 @@
 
 .minimizable-web-chat > .chat-box > header {
   background-color: #f3f7ff;
-  height: 40px;
+  height: 60px;
   display: flex;
 }
 
@@ -91,4 +91,30 @@
 
 .minimizable-web-chat > .chat-box > .react-web-chat {
   flex: 1;
+}
+
+.minimizable-web-chat > .chat-box > header > .botIcon {
+  width: 45px;
+  height: 45px;
+  padding-left: 5px;
+  padding-top: 4px;
+
+}
+.minimizable-web-chat > .chat-box > header > .bot-header-title {
+  color: #0282e4;
+  text-align: left;
+  font-family: "Calibri", sans-serif;
+  font-style: bold;
+  font-size: 15px;
+  line-height: 18px;
+  padding-top: 7.5px;
+  padding-left: 12px;
+}
+
+.header-body {
+  color: #5fa4da;
+  text-align: left;
+  font-family: "Calibri", sans-serif;
+  font-size:11px;
+  line-height: 12px;
 }

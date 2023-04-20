@@ -1,7 +1,7 @@
 import ReactWebChat, { createDirectLine, createStyleSet } from 'botframework-webchat';
 import React, { useEffect, useMemo } from 'react';
 
-import UserImage from './Icons/avatar_icon.png';
+import UserImage from './Icons/avatar_white.png';
 import BotImage from './Icons/chatbot_icon.png';
 
 import './WebChat.css';
@@ -15,7 +15,7 @@ const WebChat = ({ className, onFetchToken, store, token }) => {
         backgroundColor: 'white',
         bubbleBorderRadius: 20, bubbleNubOffset: 5,
         bubbleNubSize: 10,
-        bubbleFromUserNubSize: 10,
+        bubbleFromUserNubSize: 200,
         bubbleFromUserBorderRadius: 20, 
         bubbleFromUserNubOffset: 5,
         bubbleFromUserBackground: '#0083e7'

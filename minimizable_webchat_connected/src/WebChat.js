@@ -16,11 +16,12 @@ const WebChat = ({ className, onFetchToken, store, token }) => {
         bubbleBorderRadius: 20, bubbleNubOffset: 5,
         bubbleNubSize: 10,
         bubbleFromUserNubSize: 10,
+        bubbleFromBotNubSize: 10,
         bubbleFromUserBorderRadius: 20, 
         bubbleFromUserNubOffset: 5,
         bubbleFromUserBackground: '#0083e7',
         bubbleFromUserTextColor: 'White',
-        bubbleFromBotNubSize: 10,
+
       }),
 
     []
@@ -32,9 +33,7 @@ const WebChat = ({ className, onFetchToken, store, token }) => {
     botAvatarInitials: 'Me2',
     userAvatarImage: UserImage,
     userAvatarInitials: 'User',
-    bubbleFromUserNubSize: 5,
-    bubbleFromBotNubSize: 5,
-    bubbleFromUserTextColor: 'White',
+
     backgroundColor: 'white',
     bubbleBorderRadius: 20, bubbleNubOffset: 5,
     bubbleNubSize: 10,
@@ -42,7 +41,8 @@ const WebChat = ({ className, onFetchToken, store, token }) => {
     bubbleFromBotNubSize: 10,
     bubbleFromUserBorderRadius: 20, 
     bubbleFromUserNubOffset: 5,
-    bubbleFromUserBackground: '#0083e7'
+    bubbleFromUserBackground: '#0083e7',
+    bubbleFromUserTextColor: 'White',
   };
   
   useEffect(() => {

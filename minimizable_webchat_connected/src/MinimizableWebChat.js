@@ -5,6 +5,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import './fabric-icons-inline.css';
 import './MinimizableWebChat.css';
 import WebChat from './WebChat';
+import BotImage from './Icons/chatbot_icon.png';
 
 const MinimizableWebChat = () => {
   // Create the store
@@ -94,6 +95,10 @@ const MinimizableWebChat = () => {
       {loaded && (
         <div className={classNames(side === 'left' ? 'chat-box left' : 'chat-box right', minimized ? 'hide' : '')}>
           <header>
+            <img className = "botIcon" src={BotImage} alt="botIcon"/>
+            <text className="bot-header-title"> Me2 Chatbot <br/> <div class="header-body">We value privacy. No third party can <br/> get access to the chat history.</div>
+            </text>
+            
             <div className="filler" />
             <button className="switch" onClick={handleSwitchButtonClick}>
               <span className="ms-Icon ms-Icon--Switch" />
@@ -101,6 +106,8 @@ const MinimizableWebChat = () => {
             <button className="minimize" onClick={handleMinimizeButtonClick}>
               <span className="ms-Icon ms-Icon--ChromeMinimize" />
             </button>
+
+            
           </header>
           <WebChat
             className="react-web-chat"
